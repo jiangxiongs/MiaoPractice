@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,h3,ol,ul,li,p,input{
+				margin: 0;
+				padding: 0;
+				font-size: 12px;
+			}
+			li{
+				list-style: none;
+			}
+			.box{
+				width: 650px;
+				border: 2px solid #CCCCCC;
+				margin: 50px auto;
+				padding: 10px;
+			}
+			.hint{
+				height: 30px;
+				line-height: 30px;
+				color: #6e6e6e;
+				font-size: 16px;
+				border-bottom: 2px solid #CCCCCC;
+			}
+			.hint span{
+				font-size: 16px;
+				font-weight: normal;
+				margin-left: 20px;
+			}
+			.con{
+				width: 650px;
+				height: 280px;
+				position: relative;
+				overflow: hidden;
+				background: url(img/none.jpg) 0 0 repeat no-repeat;
+			}
+			.gaine{
+				width: 325px;
+				height: 280px;
+				z-index: 10px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.box ul{
+				height: 280px;
+			}
+			.box ul li {
+				width:162px;
+				height:280px;
+				float:left;
+				position:relative;
+				left: 0;
+				top: 0;
+			}
+			.caddy{
+				width: 152px;
+				height: 264px;
+				background-color: #fff;
+				padding: 5px 0px 10px 9px;
+				border-right: 2px solid #f2f2f2;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.inputs{
+				width: 152px;
+				height:22px;
+				margin-bottom: 20px;
+			}
+			.txt{
+				width: 110px;
+				height: 20px;
+				line-height: 19px;
+				border:1px solid  #000;
+				float: left;
+				font-size: 13px;
+			}
+			.btn{
+				float: left;
+				cursor: pointer;
+				margin-left: 2px;
+				height: 21px;
+				line-height: 21px;
+			}
+			.surplus{
+				width: 143px;
+				padding-left: 8px;
+				font-weight: bold;
+				overflow: hidden;
+				height: 16px;
+				line-height: 16px;
+				display: block;
+				margin-bottom: 10px;
+			}
+			.imgs{
+				width: 120px;
+				height: 118px;
+				padding: 18px 10px 14px 10px;
+				position: relative;
+			}
+			.imgs b {
+				position:absolute;
+				width:48px;
+				height:36px;
+				padding-top:12px;
+				right:0;
+				top:0;
+				background:url(img/b.png) 0 0 no-repeat;
+				text-align:center;
+				color:#fff;
+			}
+			.imgs b span {
+				font-size:20px;
+				display:block;
+				height:20px;
+			}
+			.reveal {
+				width:145px;
+				height:30px;
+				line-height:16px;
+				color:#000;
+				overflow:hidden;
+				padding-left: 4px;
+			}
+			.price {
+				width:145px;
+				height:16px;
+				text-align: center;
+				line-height:16px;
+				color:#c0c0c0;
+			}
+			.price em {
+				font-style:normal;
+				color:#b9003d;
+			}
+			.detail {
+				width:650px;
+				height:36px;
+				margin-bottom:3px;
+				background-color:#e6e6e6;
+			}
+			.detail p, .detail span {
+				float:left;
+				width:180px;
+				text-align:center;
+				overflow:hidden;
+				color:#323232;
+				font-weight:bold;
+				line-height:36px;
+			}
+			.box ol {
+				width:650px;
+			}
+			.box ol li {
+				width:603px;
+				height:62px;
+				background-color:#e6e6e6;
+				padding:10px 45px 10px 0;
+				margin-bottom:3px;
+			}
+			.box ol li p, .box ol li span {
+				float:left;
+				width:170px;
+				text-align:center;
+				overflow:hidden;
+				color:#323232;
+				height:62px;
+				line-height:62px;
+				padding:0 5px;
+			}
+			.box ol li span {
+				font-weight:bold;
+			}
+			.box ol li div {
+				width:77px;
+				height:60px;
+				background-color:#fff;
+				border:1px solid #626262;
+				float:right;
+			}
+			.box ol li div img {
+				display:block;
+				width:77px;
+				height:60px;
+			}
+			.result {
+				height:44px;
+				line-height:44px;
+				padding-left:10px;
+				color:#000;
+				font-size:14px;
+				font-weight:bold;
+			  position:relative;
+			}
+			.result strong {
+				color:#b9003d;
+			}
+			.result input {
+			  position: absolute;
+			  right: 10px;
+			  top: 10px;
+			 }
+			 
+			 #test { width: 200px; height: 200px; background: red; /*opacity: 1;*/}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h3 class="hint">限购时间<span>（输入格式为：aug,25,2017 14:36:00）</span></h3>
+			<div class="con">
+				<div class="gaine"></div>
+				<ul>
+					<li>
+						<div class="caddy">
+							<div class="inputs">
+								<input type="text" class="txt" value="aug,25,2017 14:36:00"/>
+								<input type="button" class="btn" value="确定"/>
+							</div>
+							<!--剩余时间-->
+							<span class="surplus">剩余00天00小时00分钟00秒</span>
+							<div class="imgs">
+								<img src="img/sj.jpg" width="120px height:117px"/><b><span>8.8</span>折</b>
+							</div>
+							<p class="reveal">inphoe7s plus 酷炫手机</p>
+							<p class="price">抢购价<em>￥</em><em>8000</em></p>
+						</div>
+					</li>
+					<li>
+						<div class="caddy">
+							<div class="inputs">
+								<input type="text" class="txt" value="aug,25,2017 14:36:00"/>
+								<input type="button" class="btn" value="确定"/>
+							</div>
+							<!--剩余时间-->
+							<span class="surplus">剩余00天00小时00分钟00秒</span>
+							<div class="imgs"><img src="img/dn.jpg" width="120px height:117px"/><b><span>8.8</span>折</b></div>
+							<p class="reveal">27英寸 配备Reti5k显示屏</p>
+							<p class="price">抢购价<em>￥</em><em>15999</em></p>
+						</div>
+					</li>
+					<li>
+						<div class="caddy">
+							<div class="inputs">
+								<input type="text" class="txt" value="aug,25,2017 14:36:00"/>
+								<input type="button" class="btn" value="确定"/>
+							</div>
+							<!--剩余时间-->
+							<span class="surplus">剩余00天00小时00分钟00秒</span>
+							<div class="imgs"><img src="img/txd.jpg" width="120px height:117px"/><b><span>8.8</span>折</b></div>
+							<p class="reveal">飞利浦  锐锋系列剃须刀</p>
+							<p class="price">抢购价<em>￥</em><em>500</em></p>
+						</div>
+					</li>
+					<li>
+						<div class="caddy">
+							<div class="inputs">
+								<input type="text" class="txt" value="aug,25,2017 14:36:00"/>
+								<input type="button" class="btn" value="确定"/>
+							</div>
+							<!--剩余时间-->
+							<span class="surplus">剩余00天00小时00分钟00秒</span>
+							<div class="imgs"><img src="img/watch.jpg" width="120px height:117px"/><b><span>8.8</span>折</b></div>
+							<p class="reveal">Wath时尚石英手表中性</p>
+							<p class="price">抢购价<em>￥</em><em>5000</em></p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="detail">
+			    <p>商品名称</p>
+			    <span>价钱</span>
+			  </div>
+			    <ol>
+			       <!-- <li><p>BURBERRY/巴宝莉 时尚英伦格纹优雅石英中性</p><span>899.00</span><div><img src="img/watch.jpg" width="77" height="60" alt="" /></div></li> --> 
+			    </ol>
+			  <div class="result" id="result">
+			    总价：<strong>0.00</strong>元
+			  </div>
+		</div>
+		<script type="text/javascript" src="Mtween.js">
+		</script>
+		<script type="text/javascript">
+			var lis = document.getElementsByTagName('ul')[0].getElementsByTagName('li');
+			var ol = document.getElementsByTagName('ol')[0];
+			var result = document.getElementById('result').getElementsByTagName('strong')[0];
+			var n = 0;
+			for(var i=0;i<lis.length;i++){
+				fn(i);
+			}
+			function fn(n){
+				var caddy = lis[n].getElementsByClassName('caddy')[0];
+				var txt = caddy.getElementsByClassName('txt')[0];
+				var btn = caddy.getElementsByClassName('btn')[0];
+				var surplus = caddy.getElementsByClassName('surplus')[0];
+				var imgs = caddy.getElementsByTagName('img')[0].src;
+				var reveal = caddy.getElementsByClassName('reveal')[0].innerHTML;
+				var price = caddy.getElementsByClassName('price')[0].getElementsByTagName('em')[1].innerHTML;
+				var timer = null;
+				btn.onclick = function(){
+					//获取输入内容
+					var val = txt.value;
+					//设置目标时间
+					var target = new Date(val);
+					timer = setInterval(function(){
+						//当前
+						var now = new Date();
+						//目标时间-当前时间=剩余时间，还剩多少时间，除以1000，单位换算成秒
+						var shyTime = (target-now)/1000;
+						//如果剩余时间>0，证明时间还没到
+						if(shyTime>0){
+							var shyT = Math.floor(shyTime/86400);
+							var shyH = Math.floor(shyTime%86400/3600);
+							var shyM = Math.floor(shyTime%3600/60);
+							var shyS = Math.floor(shyTime%60);
+							//倒计时显示时间
+							surplus.innerHTML = '剩余'+tink(shyT)+'天'+tink(shyH)+'小时'+tink(shyM)+'分钟'+tink(shyS)+'秒';
+						}else{
+							//时间到了，关闭定时器
+							clearInterval(timer);
+							//开始抖动
+							shake(caddy,'left',function(){
+								//抖动完让它下移
+								move({
+									obj:caddy,
+									attrs:{top:300},
+									duration:500,
+									callBack:function(){
+										//生成一条列表
+										ol.innerHTML += `<li><p>${reveal}</p><span>${price}</span><div><img src="${imgs}" width="77" height="60" alt="" /></div></li>`;
+										n+=Number(price);
+										result.innerHTML = n;
+									}
+								})
+							})
+						}
+					},1000)
+					
+				}
+			}
+			function tink(n){
+				return n<10?'0'+n:''+n;
+			}
+		</script>
+	</body>
+</html>
