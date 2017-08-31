@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 3000px;
+				margin: 0;
+			}
+			#box{
+				width: 2000px;
+				height: 30px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+		/*
+			 * 可视区宽度
+			   document.body.clientWidth
+			 * document.documentElement.clientWidth
+			 * 
+			 * 可视区高度
+			 * document.documentElement.clientHeight
+			 * */
+			var box = document.getElementById('box');
+//			console.log(document.body.clientHeight);
+//			console.log(document.body.clientWidth);
+			console.log(document.documentElement.clientWidth);
+		</script>
+	</body>
+</html>

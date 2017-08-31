@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				padding: 100px;
+				border: 10px solid #000000;
+			}
+			#box2{
+				width: 100px;
+				height: 500px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box2"></div>
+		</div>
+		<script type="text/javascript">
+			/*
+			 scrollWidth/scrollHeight
+			 内容宽度/内容高度
+			 当内容没有超出，与clientWidth相等
+			 超出时，clientWidth+超出内容部分
+			 * 
+			 * */
+			var box = document.getElementById('box');
+			console.log(box.scrollHeight)
+		</script>
+	</body>
+</html>
