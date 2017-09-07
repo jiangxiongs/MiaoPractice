@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul,h3,span,li{
+				padding: 0;
+				margin: 0;
+			}
+			#box{
+				width: 800px;
+				margin: 100px auto;
+				border: 4px solid #F1F1F1;
+				background-color: #6DE0FD;
+			}
+			.choose{
+				height: 40px;
+				width: 100%;
+				/*padding: 5px;*/
+				line-height: 40px;
+				background-color: #F2F2F2
+			}
+			h3{
+				float: left;
+				margin-left: 20px;
+			}
+			.choose .info div{
+				height: 28px;
+				line-height: 28px;
+				text-align: center;
+				float: left;
+				padding: 0px 10px;
+				border: 1px solid #0066FF;
+				margin-top: 5px;
+				margin-right: 10px;
+			}
+		 	.choose .info div span{
+	            display: inline-block;
+	        	font-size: 20px;
+	        	margin-left: 10px;
+	            text-align: center;
+	            line-height:20px;
+	            cursor:pointer;
+	        }
+	        ul{
+	            list-style: none;
+	            padding:10px;
+	        }
+	        li{
+	            padding:5px;
+	            margin:10px 0;
+	        }
+	        li strong,li span{
+	            display: inline-block;
+	            padding:5px;
+	        }
+	        span{
+	            cursor:pointer;
+	        }
+	        span.active{
+	            color:#66CC00;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="choose">
+				<h3>你的选择 ：</h3>
+				<div class="info">
+					<!--<div>苹果<span>x</span></div>-->
+				</div>
+			</div>
+			<!---->
+			<ul id="item">
+				<li class="brand">
+		            <strong>品牌：</strong>
+		            <span>苹果</span>
+		            <span>小米</span>
+		            <span>锤子</span>
+		            <span>魅族</span>
+		            <span>华为</span>
+		            <span>三星</span>
+		            <span>OPPO</span>
+		            <span>vivo</span>
+		            <span>乐视</span>
+		            <span>360</span>
+		            <span>中兴</span>
+		            <span>索尼</span>
+		        </li>
+		        <li class="measure">
+		            <strong>尺寸：</strong>
+		            <span>3.0英寸以下</span>
+		            <span>3.0-3.9英寸</span>
+		            <span>4.0-4.5英寸</span>
+		            <span>4.6-4.9英寸</span>
+		            <span>5.0-5.5英寸</span>
+		            <span>5.5-5.9英寸</span>
+		            <span>6.0英寸以上</span>
+		        </li>
+		        <li  class="system">
+		            <strong>系统：</strong>
+		            <span>安卓(Android)</span>
+		            <span>苹果(IOS)</span>
+		            <span>微软(WindowsPhone)</span>
+		            <span>无</span>
+		            <span>其他</span>
+		        </li>
+		        <li  class="mesh">
+		            <strong>网络：</strong>
+		            <span>联通3G</span>
+		            <span>双卡单4G</span>
+		            <span>双卡双4G</span>
+		            <span>联通4G</span>
+		            <span>电信4G</span>
+		            <span>移动4G</span>
+		        </li>
+			</ul>
+		</div>
+		<script type="text/javascript"> 
+			//初始化设置数据结构,用一个json来存数据
+			var Data = {
+				"brand":'',
+				"measure":'',
+				"system":'',
+				"mesh":''
+			}
+			//给span添加点击事件，收集数据
+			var spans = document.querySelectorAll('#item span');
+			for(var i=0;i<spans.length;i++){
+				//给每个span添加点击事件
+				spans[i].onclick = function(){
+					//获取同一行的span
+					var spans = this.parentNode.querySelectorAll('span');
+					//大清洗
+					for(var i=0;i<spans.length;i++){
+						spans[i].style.color = '';
+					}
+					this.style.color = 'red';
+					Data[this.parentNode.className] = this.innerHTML;
+					show();
+				};
+			}
+			//渲染数据
+			function show(){
+				var casesInfo = document.querySelector('.info');
+				casesInfo.innerHTML = '';
+				for(var m in Data){
+					if(!Data[m]) continue;
+					//遍历所有内容，渲染数据
+					//创建元素
+					var divs= document.createElement('div');
+					var span = document.createElement('span');
+					divs.innerHTML = Data[m];
+					span.innerHTML = 'x';
+					//删除的点击事件
+					span.onclick = function(){
+						var content = this.parentNode.childNodes[0].nodeValue.trim();
+						//清除数据
+						for(var m in Data){
+							if(content==Data[m]){
+								Data[m] = '';
+								break;
+							}
+						};
+						//重新渲染页面显示的内容
+						show();
+						//清除被标记的同名数据
+						var spans = document.querySelectorAll('#item span');
+						for(var i=0;i<spans.length;i++){
+							if(spans[i].innerHTML.trim()==content){
+								spans[i].style.color = '';
+								break;
+							}
+						};
+					};
+					divs.appendChild(span);
+					casesInfo.appendChild(divs);
+				};
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,input{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+				display: inline-block;
+				padding: 0px 6px 0px 6px;
+			}
+			#box{
+				width: 500px;
+				height: 400px;
+				border: 1px solid #000000;
+				margin: 20px auto;
+				background: deepskyblue;
+				padding:80px 50px 50px 50px;
+			}
+			#case{
+				width: 460px;
+				height: 110px;
+				background: #fff;
+				border-radius: 10px;
+				padding: 20px;
+				position: relative;
+			}
+			#case input[type="text"],#case select{
+				width: 150px;
+				height: 30px;
+				line-height: 30px;
+				font-size: 16px;
+				border: 1px solid deepskyblue;
+				border-radius: 20px;
+				outline: none;
+			}
+			#case div{
+				float: left;
+				margin: 10px 20px;
+			}
+			#btn{
+				padding: 5px 78px;
+				border: 1px solid aliceblue;
+				background-color:lightskyblue ;
+				color: #fff;
+				float: left;
+				border-radius: 20px;
+				margin-left: 20px;
+				margin-top: 8px;
+			}
+			#item{
+				width: 500px;
+				margin-top: 50px;
+				
+			}
+			#item thead,#item tbody{
+				width: 100%;
+				height: 35px;
+				line-height: 35px;
+				background:rgba(0,0,0,0.2);
+				color: #fff;
+				margin: 0;
+				padding: 0;
+				border-radius: 20px;
+			}
+			#item tbody{
+				background: #fff;
+				color: #000;
+			}
+			#topBtn,#botBtn,#cancel{
+				cursor: pointer;
+			}
+			#cancel{
+				margin-top: 6px;
+			}
+			#checkAll{
+				display: inline-block;
+				padding-left:8px ;
+			}
+			td {
+	            text-align: center;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<!--上边盒子-->
+			<form id="case" name="form">
+				<div>姓名&nbsp;<input type="text" id="name"/ ></div>
+				<div>年龄&nbsp;<input type="text" id="ages"name="age"/ ></div>
+				<div>性别&nbsp;
+					<select name="sex">
+						<option value="男">男生</option>
+						<option value="女">女生</option>
+					</select>
+				</div>
+				<a href="javascript:;" id="btn">添加</a>
+			</form>
+			<!--下边盒子-->
+			<table id="item" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th><input type="checkbox" id="checkAll"  id="checkAll"/> 全选</th>
+						<th>ID</th>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>性别</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!--<tr>
+						<td><input type="checkbox" id="checkAll"  id="checkAll"/></td>
+						<td>1</td>
+						<td>小明</td>
+						<td>22</td>
+						<td>男</td>
+						<td><a id="topBtn">↑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="botBtn">↓</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/delete.png"/ id="cancel"></td>
+					</tr>-->
+				</tbody>
+			</table>
+		</div>
+		
+		<!--<div id="item">-->
+		<!--</div>-->
+		<script type="text/javascript">
+			var cases = document.getElementById('case');
+			var oTable = document.getElementById('item');
+			var oTbody = oTable.tBodies[0];
+			var oThead = oTable.tHead;
+			var all = document.getElementById('checkAll');
+			var btn = document.getElementById('btn');
+			var inps = oTbody.getElementsByTagName('input');
+			var Data = [];
+			
+			function show(obj){
+				var tr = oTbody.insertRow();
+				tr.innerHTML = `<td>
+                    <input type="checkbox"/>
+                </td>
+                <td>${obj.id}</td>
+                <td>${obj.name}</td>
+                <td>${obj.age}</td>
+                <td>${obj.sex}</td>`;
+				var inp = tr.getElementsByTagName('input')[0];
+				inp.onclick = function(){
+					checkAll();
+				}
+				
+				var td = tr.insertCell();
+				//创建上移，下移，删除按钮
+				var a1 = document.createElement('a'); 
+        		var a2 = document.createElement('a');
+        		var a3 = document.createElement('a');
+//      		var t1 = document.createTextNode('&nbsp;');
+//     			var t2 = document.createTextNode('&nbsp;');
+        		a1.href = a2.href = a3.href = 'javascript:;';
+        		a1.innerHTML = '↑';
+        		a2.innerHTML = '↓';
+        		a3.innerHTML = '删除';
+        		//上移，下移，删除按钮的点击
+        		//上移
+        		a1.onclick = function(){
+        			var prev = tr.previousElementSibling;
+        			if(prev){
+        				oTbody.insertBefore(tr,prev);
+        			}
+        		}
+        		//下移
+        		a2.onclick = function(){
+        			var next = tr.nextElementSibling;
+        			if(next){
+        				oTbody.insertBefore(next,tr);
+        			}
+        		}
+        		//删除
+        		a3.onclick = function(){
+        			//删除页面结构
+        			oTbody.removeChild(tr);
+        			//删除数据
+        			checkAll();
+        		}
+        		td.appendChild(a1);
+//      		td.appendChild(t1);
+        		td.appendChild(a2);
+//      		td.appendChild(t2);
+        		td.appendChild(a3);
+			}
+			
+			/*--------渲染页面 ------- */
+			//判断全选
+			function checkAll(){
+				var m = 0;
+				for(var i=0;i<inps.length;i++){
+					if(inps[i].checked){
+						m++;
+					}
+				}
+				if(m==inps.length){
+					all.checked = true;
+				}else{
+					all.checked = false;
+				}
+			}
+			//全选按钮的点击
+			all.onclick = function(){
+				for(var i=0;i<inps.length;i++){
+					if(this.checked){
+						inps[i].checked = true;
+					}else{
+						inps[i].checked = false;
+					}
+				}
+			}
+			var max = maxId(Data);
+//		    console.log(max)
+		    function maxId(data){
+		    	var max = 0;
+		    	data.forEach(function(a){
+		    		if(a.id>max){
+		    			max = a.id;
+		    		}
+		    	});
+		    	return max;
+		    }
+			//添加按钮
+			btn.onclick = function(){
+				var name = document.getElementById('name').value;
+				var age = form.age.value;
+				var sex = form.sex.value;
+				var id = ++max;
+				var j = {
+					id:id,
+					name:name,
+					age:age,
+					sex:sex
+				}
+				Data.push(j);
+				show(j);
+				checkAll();
+			}
+		</script>
+	</body>
+</html>

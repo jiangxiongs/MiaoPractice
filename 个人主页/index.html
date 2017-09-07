@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				padding: 0;
+				margin: 0;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			a{
+				/*display: block;*/
+				text-decoration: none;
+				color: #000;
+			}
+			html,body{
+				position: relative;
+			}
+			#avatar{
+				width: 450px;
+				height: 118px;
+				border: 1px solid #fff;
+				position: absolute;
+				right: 60px;
+				top:280px;
+				border-radius: 4px;
+			}
+			#avatar .avas{
+				width: 110px;
+				height: 110px;
+				border: 1px solid #000;
+				padding: 6px 0 0px 7px;
+				border-radius: 5px;
+				background-color: #f1f1f1;
+				display: inline-block;
+			}
+			#avatar .avas img{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #000;
+			}
+			#avatar .txt1,#avatar .txt2,#avatar .txt3{
+				position: absolute;
+				color: greenyellow;
+			}
+			#avatar .txt1{
+				top: 10px;
+				left: 130px;
+			}
+			#avatar .txt2{
+				top: 45px;
+				left: 180px;
+				color: #fff;
+			}
+			#avatar .txt3{
+				top: 80px;
+				left: 220px;
+			}
+			#nav{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 20px;
+			}
+			span{
+				width: 40px;
+				height: 300px;
+				margin-left: 10px;
+				background: #fff;
+				border: 1px solid deepskyblue;
+				position: absolute;
+				top: 20px;
+				border-radius: 0px 0px 4px 4px;
+				background:rgba(0,0,0,0.2) ;
+				cursor: pointer;
+				color: #fff;
+				box-sizing: border-box;
+				font-size: 20px;
+				padding: 0px 6px;
+			}
+			span:hover{
+				color: yellow;
+			}
+			.span1{
+				height: 395px;
+				left: 12px;
+			}
+			.span1:hover{
+				color: red;
+			}
+			.span2{
+				height: 350px;
+				left: 85px;
+			}
+			.span3{
+				height: 300px;
+				left: 170px;
+			}
+			.span4{
+				height: 250px;
+				left: 250px;
+			}
+			.span5{
+				height: 200px;
+				left: 340px;
+			}
+			.span6{
+				height: 150px;
+				left: 440px;
+			}
+			.span7{
+				height: 100px;
+				left: 540px;
+			}
+			.span8{
+				height: 50px;
+				left: 640px;
+			}
+			.span9{
+				height: 30px;
+				left: 740px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			首页+分页
+			首页：个人信息，职业信息。。。
+			首页设置一个开关，点击进入分页面
+			分页：作品展出模块{
+				作品集合：
+				例如：小游戏模块
+			}
+			
+		-->
+		<div id="box">
+			<img src="img/4.jpg"/>
+			<img src="img/nav.jpg"/ id="nav">
+			<!--个人头像部分内容-->
+			<div id="avatar">
+				<a href="javascript:;" class="avas"><img src="img/bg.png"></a>
+				<div class="txt1">昵称 ：旧光影里的夏天</div>
+				<div class="txt2">职业：web开发工程师</div>
+				<div class="txt3">用心经营过程，结果自然产生</div>
+			</div>
+			<span class="span1">---------------联系方式</span>
+			<span class="span2">------电话号码</span>
+			<span class="span3">------年龄</span>
+			<span class="span4">------爱好</span>
+			<span class="span5">------星座</span>
+			<span class="span6">------邮箱</span>
+			<span class="span7">------</span>
+			<span class="span8">---</span>
+			<span class="span9">---</span>
+			
+			
+		</div>
+		
+		<script type="text/javascript">
+			//小竖条
+			var spans = document.getElementsByTagName('span');
+//			var arr = ['red','yellow','blue','greenyellow','blue','greenyellow'];
+//			for(var i=0;i<spans.length;i++){
+//				spans[i].index = i;
+//				spans[i].onmouseover  =function(){
+//					for(var i=0;i<this.index;i++){
+//						spans[i].style.backgroundColor = '';
+//						spans[i].style.color = '';
+//					}
+//					spans[this.index].style.color = arr[this.index];
+//					this.style.backgroundColor = '#fff';
+//				}
+//				
+//			}
+		</script>
+	</body>
+</html>
