@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li class="li">1</li>
+			<li>2</li>
+			<li class="li">3</li>
+		</ul>
+		<script type="text/javascript">
+		/*
+		 className获取元素有兼容性问题，请封装一个函数可以传入#id,class,tag获取元素返回
+
+		 * */
+			var ul = document.getElementById('ul');
+			function $(name){
+				//截取name下的第一个
+				var tilte = name.charAt();
+				//获取所有元素
+				var aEle = document.getElementsByTagName('*');
+				//储存符合条件的元素
+				var arr = [];
+//				console.log(aEle);
+				if(tilte === '#'){
+					//说明为id的时候
+					return document.getElementById(name.substring(1));
+				}else if(tilte === '.'){
+					//说明为class的时候
+					//截取除了第一位后边所有的
+					var d = name.substring(1);
+					for(var i=0;i<aEle.length;i++){
+						//将所有元素中找到有className的用空格分割隔开
+						var arr2 = aEle[i].className.split(' ');
+						
+						//循环数组
+						for(var j=0;j<arr2.length;j++){
+							//如果存的值与arr2中的值全等，将找到的值push到arr数组中
+							if(arr2[j] === d){
+								arr.push(aEle[i]);
+							}
+						}
+					};
+					return arr;
+				}else{
+					//除了id和class以外的
+					return document.getElementsByTagName(name);
+				}
+				console.log(tilte);
+			};
+			//找到class名为li的元素，并加上背景颜色
+			for(var i=0;i<$('.li').length;i++){
+				$('.li')[i].style.background = 'red';	
+			}
+			console.log($('#ul'));
+		</script>
+	</body>
+</html>

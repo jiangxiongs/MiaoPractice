@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			function Drag(id){
+				var box = document.getElementById(id);
+				//储存鼠标位置
+				var disX = 0;
+				var disY = 0;
+				//鼠标按下
+				box.addEventListener('mousedown',down);
+				//按下的函数
+				function down(ev){
+					//找到鼠标在document的位置
+					disX = ev.clientX - this.offsetLeft;
+					disY = ev.clientY - this.offsetTop;
+					//鼠标移动和鼠标抬起
+					document.addEventListener('mousemove',move);
+					document.addEventListener('mouseup',up);
+					//鼠标移动的函数
+					function move(ev){
+						//box移动时距离document的位置
+						box.style.left = ev.clientX - disX + 'px';
+						box.style.top = ev.clientY - disY + 'px';
+					}
+					//鼠标抬起函数
+					function up(){
+						//抬起时，清除自身和移动事件
+						document.removeEventListener('mousemove',move);
+						document.removeEventListener('mouseup',up);
+					}
+				};
+			}
+			Drag('box');
+		</script>
+	</body>
+</html>
