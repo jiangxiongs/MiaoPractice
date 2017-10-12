@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	正则表达式
+			 		：用来表单验证，匹配字符串，符号，火星文
+			 	用来专门操作（检测）字符串（擅长模糊范围）的一种规则
+			 	
+			 * 
+			*/
+			
+				
+			//找到下面字符串中所有的数字并且放到数组中。charAt();
+			var str = '23kdsjfso42flsd762kd2ffmwe55t';
+			//23,42,762,2,55
+			var arr = [];
+			//isNaN,不是数字的数字类型
+//			for(var i=0;i<str.length;i++){
+//				if(!isNaN(parseInt(str.charAt(i)))){//true NaN
+//					arr.push(str.charAt(i));
+//				}
+//			};
+//			console.log(arr);
+			
+			var t = '';
+			for(var i=0;i<str.length;i++){
+				if(!isNaN(parseInt(str.charAt(i)))){//true NaN
+					t += str.charAt(i);
+				}else{
+					if(t){
+						arr.push(t);	
+						t = '';
+					}
+				}
+			};
+			if(t = ''){
+				arr.push(t);
+				t = '';
+			}
+//			console.log(arr,t);
+			//正则方法
+			console.log(str.match(/\d+/g));
+		</script>
+	</body>
+</html>
