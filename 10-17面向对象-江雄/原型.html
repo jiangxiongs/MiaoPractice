@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+//		var arr = [];
+//		var arr2 = [];
+//		Array.prototype.push = function(){
+//			alert('我把你改了');
+//		}
+//		arr.push();
+//		arr2.push();
+//		
+//		console.log(arr == arr2);
+
+
+
+		function Fn(name){
+			this.name = name;
+		}
+		Fn.prototype.say = function(){
+			alert(this.name);
+		}
+		var num1 = new Fn('小葱');
+		var num2 = new Fn('小余');
+		
+		num1.say();
+		num2.say();
+		
+		console.log(num1.say === num2.say);
+		console.log(num1);
+	</script>
+</body>
+</html>

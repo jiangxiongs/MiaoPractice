@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//构造函数，工厂函数是一个东西/
+		//-----工厂函数------
+		 
+		function Person(name,age,sex){
+			//原材料
+			var obj = {};
+			//加工
+			obj.name = name;
+			obj.age = age;
+			obj.sex = sex;
+			obj.say = function(){
+				alert('我叫'+this.name);
+			}
+			return obj;
+		}
+		var xh = Person('小白',19,'男');
+		xh.say();
+	</script>
+</body>
+</html>

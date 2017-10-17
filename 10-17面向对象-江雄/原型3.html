@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(name,age,sex,job){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.job = job;
+		}
+		
+		Object.prototype.say = function(){
+			alert(this.job);
+		}
+		Object.say = function(){
+			alert('cccc');
+		}
+		Person.prototype.say = function(){
+			alert('123');
+		}
+		Function.prototype.say = function(){
+			alert('aaaa');
+		}
+		var num = new Person('小白',19,'男','前端');
+		Person.say();
+		console.dir(Person);
+	</script>
+</body>
+</html>
