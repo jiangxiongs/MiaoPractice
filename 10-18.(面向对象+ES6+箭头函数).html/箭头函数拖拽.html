@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+	    #box{
+	        width:100px;
+	        height: 100px;
+	        background: red;
+	        position: absolute;
+	        top:0;
+	        left:0;
+	    }
+    </style>
+</head>
+<body>
+	<div id="box"></div>
+	
+	<script type="text/javascript">
+		class Drag {
+			constructor(){
+				this.disX = 0;
+				this.disY = 0;
+				this.box = document.getElementById('box');
+				this.box.addEventListener('mousedown',(ev)=>{
+					this.down(ev);
+				})
+			}
+			down(ev){
+				this.disX = ev.clientX - this.box.offsetLeft;
+				this.disY = ev.clientY - this.box.offsetTop;
+				
+				var move = (ev) => {
+					this.move(ev);
+				}
+				var up = (ev) => {
+					this.up(ev,move,up);
+				}
+				document.addEventListener('mousemove',move);
+				document.addEventListener('mouseup',up);
+				
+			}
+			move(ev){
+				this.box.style.left = ev.clientX - this.disX + 'px';
+				this.box.style.top = ev.clientY - this.disY + 'px';
+			}
+			up(ev,move,up){
+				document.removeEventListener('mousemove',move);
+				document.removeEventListener('mouseup',up);
+			}
+		}
+		var t = new Drag('box');
+	</script>
+</body>
+</html>

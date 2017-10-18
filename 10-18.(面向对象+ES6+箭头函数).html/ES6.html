@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		 	类: function Person();
+		 	
+		 	ES6 : class Person {
+		 		constructor(形参){
+		 			一般初始化都放这里；
+		 		}
+		 	}
+		 	
+		 	键值对
+		 	{						{
+		 		name:name --->		name
+		 	}						}
+		 	
+		 	函数
+		 	{
+		 		fn:function (){}
+		 	}
+		 	------->
+		 	{
+		 		fn(){}
+		 	}
+ 		 */
+ 		
+ 		class Person {
+ 			constructor(name,age,sex){
+ 				this.name = name;
+ 				this.age = age;
+ 				this.sex = sex;
+ 			}
+ 			say(){
+ 				alert(this.name);
+ 			}
+ 		}
+ 		var t = new Person('鲁力',26,'男');
+ 		t.say();
+ 		console.log(t);
+	</script>
+</body>
+</html>

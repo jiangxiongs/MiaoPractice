@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		.active{
+		    background: yellow;
+		}
+		.active{
+		    background: yellow;
+		}
+		#box div,#box2 div{
+		    width:200px;
+		    height: 200px;
+		    border: 1px solid #000;
+		    display: none;
+		}
+		#box div.show,#box2 div.show{
+		    display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+        <button class="active">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="show">1111111</div>
+        <div>22222222222</div>
+        <div>3333333333333</div>
+   </div>
+   <div id="box2">
+        <button class="active">按钮一</button>
+        <button>按钮二</button>
+        <button>按钮三</button>
+        <div class="show">1111111</div>
+        <div>22222222222</div>
+        <div>3333333333333</div>
+   </div>
+
+    <!-- 点击它让第一个停 -->
+   <button id="btn1">按钮一</button>
+   <!-- 点击它让第二个开 -->
+   <button id="btn2">按钮二</button>
+    <!-- 点击它都关,再点一下都开 -->
+    <button id="btn3">按钮三</button>
+    <!-- 点击它开的关，关的开 -->
+    <button id="btn4">按钮四</button>
+    <!-- 倒着轮播 -->
+    <button id="btn5">按钮五</button>
+    
+    <script type="text/javascript">
+    	// 面向过程核心，如果去实现某个功能
+  		//面向对象核心，以谁来做这个功能
+  		
+  		function Tab(id){
+  			this.box = document.getElementById(id);
+  			this.btn = this.box.getElementsByTagName('button');
+  			this.cont = this.box.getElementsByTagName('div');
+  			this.n = 0;
+  			this.timer = null;
+  		}
+  		
+  		Tab.prototype.Even = function(){
+  			var _this = this;
+  			for(var i=0;i<this.btn.length;i++){
+  				this.btn[i].index = i;
+  				this.btn[i].onclick = function(){
+  					_this.tabs(this.index);
+  				}
+  			}
+  		}
+    	//大清洗
+  		Tab.prototype.tabs = function(index){
+  			for(var i=0;i<this.btn.length;i++){
+  				this.btn[i].className = '';
+  				this.cont[i].className = '';
+  			}
+  			this.btn[index].className = 'active';
+  			this.cont[index].className = 'show';
+  		}
+  		//正常顺序
+  		Tab.prototype.toPlay = function(){
+  			var _this = this;
+  			clearInterval(this.timer);
+  			this.timer = setInterval(function(){
+  				_this.n ++;
+  				_this.tabs(_this.n %= _this.btn.length);
+  			},1000);
+  		}
+  		//倒序
+  		Tab.prototype. reversal = function(){
+  			var _this = this;
+  			clearInterval(this.timer);
+  			this.timer = setInterval(function(){
+  				_this.n --;
+  				_this.n = (n < 0 ? _this.btn.length-1 : _this.n);
+  				_this.tabs(_this.n);
+  			},1000);
+  		}
+  		
+  		//关闭定时器的事件
+  		Tab.prototype.stop = function(){
+  			clearInterval(this.timer);
+  			this.timer = null;
+  		}
+  		
+  		var t = new Tab('box');
+  		var t2 = new Tab('box2');
+  		t.toPlay();
+  		t.Even();
+  		t2.Even();
+  	
+  		//可以不用获取，之前获取了所有id
+  		var btn1 = document.getElementById('btn1');
+  		var btn2 = document.getElementById('btn2');
+  		var btn3 = document.getElementById('btn3');
+  		var btn4 = document.getElementById('btn4');
+  		var btn5 = document.getElementById('btn5');
+  		
+  		var onOff = true;
+  		btn1.onclick = function(){
+  			t.stop();
+  		}
+  		btn2.onclick = function(){
+  			t2.toPlay();
+  		}
+  		btn3.onclick = function(){
+  			if(onOff){
+  				t.stop();
+  				t2.stop();
+  			}else{
+  				t.toPlay();
+  				t2.toPlay();
+  			}
+  			onOff = !onOff;
+  		}
+  		btn4.onclick = function(){
+  			if(!t.timer){
+  				t.toPlay();
+  			}else{
+  				t.stop();
+  			}
+  			if(!t2.timer){
+  				t2.toPlay();
+  			}else{
+  				t2.stop();
+  			}
+  		}
+  		btn5.onOff = true;
+  		//倒序的点击
+  		btn5.onclick = function(){
+  			if(btn5.onOff){
+  				t.reversal();
+  				t2.reversal();
+  			}else{
+  				t.toPlay();
+  				t2.toPlay();
+  			}
+  			btn5.onOff = !btn5.onOff;
+  		}
+    </script>
+</body>
+</html>

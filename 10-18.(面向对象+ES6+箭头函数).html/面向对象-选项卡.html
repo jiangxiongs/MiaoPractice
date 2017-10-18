@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		.active{
+		    background: yellow;
+		}
+		div{
+		    width:200px;
+		    height: 200px;
+		    border: 1px solid #000;
+		    display: none;
+		}
+		div.show{
+		    display: block;
+		}
+	</style>
+</head>
+<body>
+	<button class="active">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <div class="show">1111111</div>
+    <div>22222222222</div>
+    <div>3333333333333</div>
+    
+    <script type="text/javascript">
+    	function Tab(){
+    		this.btn = document.getElementsByTagName('button');
+    		this.cont = document.getElementsByTagName('div');
+    	}
+    	
+    	Tab.prototype.Even = function(){
+    		var _this = this;
+    		for(var i=0;i<this.btn.length;i++){
+    			this.btn[i].index = i;
+    			this.btn[i].onclick = function(){
+    				_this.tabs(this);
+    			}
+    		}
+    	}
+    	
+    	Tab.prototype.tabs = function(that){
+    		for(var i=0;i<this.btn.length;i++){
+    			this.btn[i].className = '';
+    			this.cont[i].className = '';
+    		}
+    		that.className = 'active';
+    		this.cont[that.index].className = 'show';
+    	}
+    	
+    	var t = new Tab;
+    	t.Even();
+    </script>
+</body>
+</html>

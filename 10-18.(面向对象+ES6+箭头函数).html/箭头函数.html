@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			箭头函数：
+			      var fn2 = () => 10
+			      
+			      var fn2(a,b) => a+b --箭头后默认return
+			      
+			      var fn2(a,b) =>{  --带{} 在里面return
+			      	return a+b;
+			      }
+			this跟着父级走（一直）
+			
+			 var fn = function(){}
+		*/
+		
+		function fn(){
+			return 1;
+		}
+//		console.log(fn());
+		
+//		var fn2 = () => 10; //10
+		
+//		var fn2 = (a,b) => a+b; //3
+
+//		var fn2 = (a,b) =>{
+//			var c = a + b;//--1+2=3
+//			return a + b +c;//1+2+3=6
+//		}
+//		console.log(fn2(1,2));
+		
+		
+//		var arr = [1,2,3,4,5,6];
+//		arr.forEach((e,i)=>{
+//			alert(e);
+//		})
+
+		document.onclick = function(){
+			var fn = () =>{
+				var fn2 = () =>{
+					console.log(this);
+				};
+				fn2();
+			}
+			fn();
+		}
+	</script>
+</body>
+</html>
