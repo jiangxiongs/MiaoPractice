@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    
+    <script type="text/javascript">
+//  	var a = 10;
+//  	var b = 1;
+//  	var obj = {
+//  		fn(){
+//  			console.log(this);
+//  		},
+//  		a,
+//  		["num"+1]:12,
+//  		["num"+1]:13
+//  	}
+//  	obj.fn();
+//  	console.log(obj);//{a: 10, num1: 13, fn: ƒ}
+//  	
+//  	document.onclick = function(){
+//  		b++;
+//  		console.log(obj["num"+b]);//undefined
+//  	}
+    	
+//  	{
+//	      let h  = 100;
+//	      var k = 8;
+//	      {
+//	        //   console.log(y); //找不到
+//	          {
+//	              {
+//	                let y = 110; 
+//	                console.log(h);
+//	              }
+//	          }
+//	      }
+//	  }
+    
+    	const btn = document.getElementsByTagName('button');
+    	
+    	for(let i = 0;i<btn.length;i++){
+    		btn[i].onclick = function(){
+    			alert(i);
+    		}
+    	}
+    </script>
+</body>
+</html>
