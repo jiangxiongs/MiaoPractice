@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//----obj.hasOwnproperty('属性名')
+		//查看是不是自身的属性（函数内的）
+		
+//		function Fn(name){
+//			this.name = name;
+//			this.say = function(){
+//				
+//			}
+//		}
+//		Fn.prototype.say = 10;
+//		
+//		console.log(Fn.hasOwnProperty('name'));//true
+		
+		
+		//ES6方法
+		class fn2 {
+			constructor(name){
+				this.name = name;
+			}
+			say(){
+				console.log(this);//fn2()
+				function fn3(){
+					console.log(this);//fn3()
+				}
+				new fn3();
+			}
+		}
+		var t = new fn2('小计');
+		t.say();
+		
+//		console.log(t.hasOwnProperty('name'));
+		
+		//严格模式下this为undefined
+		/*
+		 为什么要写严格模式
+		 		- 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+				- 消除代码运行的一些不安全之处，保证代码运行的安全；
+				- 提高编译器效率，增加运行速度；
+		 */
+		//进入严格模式的标志： "use strict"
+		function Fn(){
+			"use strict"
+			var a = 10;
+			console.log(a)//10
+			console.log(this);//undefined
+		}
+		Fn();
+	</script>
+</body>
+</html>

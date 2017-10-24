@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	
+	/*-----Ajax原理----------*/
+	/*ajax的交互模型:
+                1.创建一个ajax对象
+                2.填写地址
+                3.发送给服务器
+                4.等待
+                5.通话*/
+		//创建一个ajax对象
+		const ajax = new XMLHttpRequest;
+		
+		//填写地址
+		ajax.open('get','php/get.php?user='+userId.value,true);
+		
+		//发送给服务器
+		ajax.send();
+		
+		//等待
+		ajax.onload = function(){
+			//通话
+			console.log(ajax.responseText);//responseText后端发来的文字信息
+		}
+	</script>
+</body>
+</html>

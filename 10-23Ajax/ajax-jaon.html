@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		.ok{
+		    border: 1px solid green;
+		}
+		.error{
+		    border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<!-- <form action="php/get.php" method="get"> -->
+        姓名:<input type="text" name="user" id="userId"/> 
+    <!-- </form> -->
+    	
+	<script type="text/javascript">
+		const userId = document.getElementById('userId');
+		userId.onblur = function(){
+			//创建一个ajax事件
+			var ajax = new XMLHttpRequest;
+			
+			//填写地址
+			
+			ajax.open('get','../php/get_json.php?user='+userId.value,true);
+			//发送给服务器
+			ajax.send();
+			
+			//等待
+			ajax.onload = function(){
+				//通话
+				console.log(ajax.responseText);
+				//parse用于从一个字符串中解析出json对象
+				let json = JSON.parse(ajax.responseText);
+				if(!json.code){//0成功 false    !false->   true
+					userId.className = 'ok';
+				}else{
+					userId.className = 'error';
+				}
+				alert(json.msg);
+				console.log(json);
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		#box{
+		    width:100px;
+		    height: 100px;
+		    background: red;
+		    position: absolute;
+		    top:0;
+		    left:0;
+		}
+		#box2{
+		    width:100px;
+		    height: 100px;
+		    background: skyblue;
+		    position: absolute;
+		    top:0;
+		    left:100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+    <div id="box2"></div>
+    
+    <script type="text/javascript">
+    	Object.prototype.say = function(){
+    		alert('我一直在');
+    	}
+    	
+    	function Drag(id){
+	        console.log(this);
+	        this.box = document.getElementById(id);
+	        this.disX = 0;
+	        this.disY = 0;
+	    }
+	
+	    Drag.prototype.init = function(){
+	        var _this = this;
+	        this.box.addEventListener('mousedown',down);
+	        function down(ev){
+	            _this.down(ev);
+	        }
+	    }
+	    Drag.prototype.down = function(ev){
+	        var _this = this;
+	        this.disX = ev.clientX - this.box.offsetLeft;
+	        this.disY = ev.clientY - this.box.offsetTop;
+	        var move = function(ev){
+	            _this.move(ev);
+	        }
+	        var up = function(ev){
+	            _this.up(ev,move,up);
+	        }
+	        document.addEventListener('mousemove',move);
+	        document.addEventListener('mouseup',up);
+	
+	        ev.preventDefault();
+	    }
+	
+	    Drag.prototype.move = function(ev){
+	        var l = ev.clientX - this.disX;
+	        var t =  ev.clientY - this.disY;
+	        this.box.style.left = l + 'px';
+	        this.box.style.top = t + 'px';
+	    }
+	    Drag.prototype.up = function(ev,move,up){
+	        document.removeEventListener('mousemove',move);
+	        document.removeEventListener('mouseup',up);
+	    }
+	    
+	    //属性的继承---类似继承（构造继承）；
+	     function Drag2(id){
+//	         console.log(this);//Drag
+	        Drag.call(this,id);
+	        console.log(this);
+	    }
+	     //拷贝继承 //赋值 与 赋址
+	    // Drag2.prototype = Drag.prototype;
+	     for(var attr in Drag.prototype){
+	     	//查看这些属性是不是父类自身的
+	     	if(Drag.prototype.hasOwnProperty(attr)){
+	     		Drag2.prototype[attr] = Drag.prototype[attr];
+	     	}
+	     }
+	     
+	     Drag2.prototype.move = function(ev){
+	        var l = ev.clientX - this.disX;
+	        var t =  ev.clientY - this.disY;
+	        if(t < 20){
+	            t = 0;
+	        }else if(t > window.innerHeight - this.box.offsetHeight - 20){
+	            t = window.innerHeight - this.box.offsetHeight;
+	        }
+	        this.box.style.left = l + 'px';
+	        this.box.style.top = t + 'px';
+	    }
+	     t = new Drag('box');
+	     t.init();
+	     t2 = new Drag2('box2');
+	     t2.init();
+    </script>
+</body>
+</html>

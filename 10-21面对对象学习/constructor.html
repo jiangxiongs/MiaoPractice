@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	    /*
+	     	consturctor:实例化对象上的一个属性，指向构造函数
+	     	作用：查看对象的构造函数
+	     	
+	     	注意：不准确，容易被修改
+	    */
+	   
+	   /*function Fn(name,age){
+	   		this.name = name;
+	   		this.age = age;
+	   }
+	   Fn.prototype = {
+	   		constructor:Fn,
+	   		say:function(){
+	   			alert(this.name);
+	   		}
+	   var t = new Fn('刘鸥');
+	   t.say();
+	   console.log(t.constructor);
+	   }*/
+	  
+	  //ES6方法
+	  class Fn {
+		  	constructor(name,age){
+		  		this.name = name;
+		  		this.age = age;
+		  	}
+	  }
+	  Fn.prototype.say = function(){
+	  	alert(this.name);
+	  }
+	  
+	   var t = new Fn('刘鸥');
+	   t.say();
+	   console.log(t.constructor);//class Fn {constructor,,,,,,,,,}
+	   
+	   
+	   var arr = [1,2,3,4];
+	   console.log(arr.constructor == Array);
+	   
+	   
+	   var obj = {name:123}
+	   obj = {name:321};
+	   console.log(obj.name);//321
+	</script>
+</body>
+</html>

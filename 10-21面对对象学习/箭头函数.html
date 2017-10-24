@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function fn(){
+			return 1;
+		}
+		console.log(fn());
+		
+//		var fn2 = () => 10;
+		
+		var fn2 = (a,b) => a+b;  //3---箭头后默认return---
+		
+		var fn2 = (a,b) =>{   //6---带{} 在里面return
+			var c = a+b;
+			return a+b+c;
+		}
+		console.log(fn2(1,2));
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		  toString:偷偷把xx类型转化为string类型
+		     注意：只要alert()就会(偷偷)调用tostring方法
+		                所有类型都有toString方法
+		  
+		  obj -> [object Object]  第二个Object代表系统构造函数是谁
+
+       	  toSting()  还能转进制  -> var num = 10; num.toString(进制数)
+		*/
+		
+		var arr = [1,2,3,4];
+		var obj = {name:'hehe'};
+		Array.prototype.toString = function(){
+			alert('哈哈，我把你改了');
+		}
+//		alert(arr);//undefined
+		console.log(arr.toString());//undefined
+		
+		//转进制
+		var num = 1100;
+		console.log(num.toString(10));
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		类：
+		function Person(){}
+
+        ES6:
+            class Person{
+                constructor(形参){
+                    //一般初始化都放在这里。
+                }
+            }
+		*/
+		
+		class Person {
+			constructor(name,age,sex){
+				this.name = name;
+				this.age = age;
+				this.sex = sex;
+			}
+			say(){
+				alert(this.name);
+			}
+		}
+		
+		var t = new Person('小花',22,'男');
+		t.say();
+	</script>
+</body>
+</html>

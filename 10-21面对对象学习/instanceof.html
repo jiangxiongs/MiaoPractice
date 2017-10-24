@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		 instanceof :检测对象与构造函数在原型链上是否有关系
+                      二元运算符
+         
+	         实例化(对象)***  instanceof  构造函数
+	
+	        左值是不是右值构造出来的  左值必须要为对象
+	
+	        返回的是boolean值
+		 */
+		
+		function fn(){};
+		var f = new fn();
+		console.log(f instanceof fn);//true
+		
+		var arr = [];
+		console.log(Function instanceof Function);
+	</script>
+</body>
+</html>

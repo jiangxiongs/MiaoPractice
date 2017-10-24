@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//---原型：去改写对象下边公用的方法或属性，让公用的方法或属性在内存中存一份（提高性能）
+	
+		function Fn(name){
+			this.name = name;
+		}
+		Fn.prototype.say = function(){
+			alert(this.name);
+		}
+		var t = new Fn('哈哈');
+		var t2 = new Fn('搜索');
+		t.say();
+		t2.say();
+	</script>
+	
+</body>
+</html>
