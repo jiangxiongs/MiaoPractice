@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="userId"/>
+	
+	<script type="text/javascript">
+		//ajax:前后端交互的一种技术
+		//异步的js与xml
+		
+		const txt = document.getElementById('userId');
+		txt.onblur = function(){
+			//创建一个ajax对象
+			const ajax = new XMLHttpRequest;
+			//填写地址
+			ajax.open('get','../php/get_json.php?user='+encodeURI(userId.value),true);
+			//发送给服务器
+			ajax.send();
+			
+			//post方法
+			 // ajax.open('post',php/post.php');
+
+	        // ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+	
+	        // ajax.send('user='+txt.value);
+	        
+	        //等待
+	        ajax.onload = function(){
+	        	//通话
+	        	let data = JSON.parse(ajax.responseText);
+	        	if(!data.code){
+	        		alert('注册成功');
+	        	}else{
+	        		alert('呵呵');
+	        	}
+	        	console.log(data);
+	        }
+		}
+	</script>
+</body>
+</html>

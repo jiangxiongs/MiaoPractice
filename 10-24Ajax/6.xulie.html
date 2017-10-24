@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+//		name=hehe&age=20&sex=男;
+		
+//		var t = {
+//			name:'hehe',
+//			age:20,
+//			sex:'男'
+//		}
+//		var arr = [];
+//		for(var attr in t){
+//			arr.push(attr +'='+ t[attr]);
+//		}
+//		console.log(arr.join('&'));
+		
+		
+		var str = 'name=hh&age=18&sex=人妖';
+		var arr = str.split('&');
+		var t = {};
+		arr.forEach((e)=>{
+			var a2 = e.split('=');
+			t[a2[0]] = a2[1];
+		})
+		console.log(t);
+	</script>
+</body>
+</html>

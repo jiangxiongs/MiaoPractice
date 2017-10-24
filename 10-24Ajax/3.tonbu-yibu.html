@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//同步：前面的没有执行完，后面的不会执行，会一直等待
+		//异步：不用等待前面的执行完，后面的依然可以执行
+		
+		//Promise处理异步请求
+		let a = undefined;
+		let b = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				a = 50;
+				if(a === 50){
+					resolve(a);
+				}else{
+					reject();
+				}
+			},2000)
+		})
+		b.then(function(a){
+			console.log(a);//50
+			console.log(++a);//51
+		})
+		
+		document.onclick = function(){
+        let ajax = new XMLHttpRequest;
+
+        ajax.open('get','php/get_async.php?user=leo',true);
+
+        ajax.send();
+
+        ajax.onload = function(){
+            console.log(ajax.responseText);
+        }
+
+        //console.log(ajax.responseText);
+
+        alert('页面上别的内容');
+    }
+	</script>
+</body>
+</html>

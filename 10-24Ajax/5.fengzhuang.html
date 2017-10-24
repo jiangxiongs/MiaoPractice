@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="userId"/>
+<!--	<script type="text/javascript" src="ajax1.js"></script>-->
+	<script type="text/javascript" src="ajax5.js"></script>
+	<script type="text/javascript">
+		var txt = document.getElementById('userId');
+		txt.onblur = function(){
+			 // ajax('php/get.php','get','user='+txt.value,function(data){
+	        //     alert(data);
+	        // });
+	
+	        // ajax('php/get1.php','get','user='+txt.value,function(data){
+	        //     alert(data);
+	        // },function(code){
+	        //     alert(code)
+	        // });
+	        
+	        ajax({
+	        	url:'php/get_json.php',
+	        	method:'get',
+	        	data:{//数据
+	        		user:txt.value
+	        	},
+	        	success:function(data){
+	        		console.log(data);
+	        	},
+	        	fail:function(c){
+	        		alert(c);
+	        	}
+	        })
+		}
+	</script>
+</body>
+</html>
