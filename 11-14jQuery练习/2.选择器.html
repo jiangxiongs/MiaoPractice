@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style media="screen">
+        <title></title>
+            #box{
+                width: 100px;
+                height: 100px;
+                background: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+        <ul>
+            <li class="li1 li2">1</li>
+            <li class="li2 li1">2</li>
+            <li class="li1-2">3</li>
+            <li class="li1">4</li>
+            <li>5</li>
+        </ul>
+        <input type="text">
+        <input type="button" value="按钮">
+        <input type="radio">
+        <input type="checkbox">
+        <input type="button" value="按钮2">
+
+        <script src="jquery-3.2.1.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            /*
+            function $(){}
+
+            # -> id选择器
+            . -> class选择器
+            */
+            // console.log($('#box'));
+            // console.log($('.li1'));
+
+            console.log($('input[type="button"]'));//属性选择器
+            console.log($('input[type!="button"]'));//属性过滤器
+
+            // li1或li1-开头的
+            $('li[class^="li1"]').css('background','red');
+            // $('li[class$="li1"]').css('background','blue');
+        </script>
+    </body>
+</html>
